@@ -11,13 +11,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-@RestController
+@org.springframework.stereotype.Controller
 public class Controller {
     @GetMapping(path = "/")
-    public String handle() throws ParseException {
+    public String handle(Model model) throws ParseException {
+        model.addAttribute("day", getDay());
+        return "test";
+    }
+    @GetMapping(path = "/app")
+    public String getSite(Model model) throws ParseException {
+        return "index";
+    }
+
+    public String getDay() {
         Date now = new Date();
         SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
         return simpleDateformat.format(now);
     }
-
 }

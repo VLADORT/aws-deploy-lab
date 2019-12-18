@@ -4,6 +4,8 @@ import com.example.awssitelab.controller.Controller;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.ui.ConcurrentModel;
+import org.springframework.ui.Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +29,6 @@ class AwsSiteLabApplicationTests {
     void shouldReturnTrueWhenDayIsReturned() throws ParseException {
         Date now = new Date();
         SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
-        assertThat(simpleDateformat.format(now)).isEqualTo(controller.handle());
+        assertThat(simpleDateformat.format(now)).isEqualTo(controller.getDay());
     }
 }
